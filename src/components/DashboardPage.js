@@ -1,29 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
 
 export default function DashboardPage() {
-  const [error, setError] = useState("");
-  const { user, logout } = useAuth();
-  const history = useHistory();
-
-  const handleLogout = async () => {
-    setError("");
-
-    try {
-      await logout();
-      history.push("/login");
-    } catch {
-      setError("Failed to log out");
-    }
-  };
+  const { user } = useAuth();
 
   return (
     <div>
-      <h1>Dashboard</h1>
-      {error && <p>{error}</p>}
-      <p>You are logged in: {user.email}</p>
-      <button onClick={handleLogout}>Logout</button>
+      <div className="container">
+        <h1>Dashboard</h1>
+        <p>You are logged in as {user.email}</p>
+      </div>
     </div>
   );
 }

@@ -19,9 +19,15 @@ export default function LoginPage() {
   };
   return (
     <div>
-      <h1>Login</h1>
-      {error && <p>{error}</p>}
-      <button onClick={handleLogin}>Login</button>
+      <div className="box-layout">
+        <div className="box-layout__box">
+          <h1 className="box-layout__title">Login</h1>
+          {error && <p>{error}</p>}
+          <button className="btn btn-outline-secondary" onClick={handleLogin}>
+            Login with Google
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
